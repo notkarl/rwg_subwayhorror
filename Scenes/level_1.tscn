@@ -1,16 +1,48 @@
 [gd_scene format=3 uid="uid://bdca6jhyk3nie"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqy1o"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vk57k"]
+sky_material = SubResource("ProceduralSkyMaterial_qqy1o")
+
+[sub_resource type="Environment" id="Environment_8ffim"]
+background_mode = 2
+sky = SubResource("Sky_vk57k")
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqy1o"]
 albedo_color = Color(0.21568628, 0.21568628, 0.101960786, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk57k"]
+albedo_color = Color(0.45845687, 0.4098454, 0.37439033, 1)
+metallic = 0.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ffim"]
+albedo_color = Color(0.738461, 0.49313146, 0.31224328, 1)
+
 [node name="Level1" type="Node3D" unique_id=292307927]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=271324149]
+environment = SubResource("Environment_8ffim")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=51113344]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=743304872]
 transform = Transform3D(50, 0, 0, 0, 0.1, 0, 0, 0, 50, 0, -0.05, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_qqy1o")
 
+[node name="TrackSubtraction" type="CSGBox3D" parent="Floor" unique_id=416277599]
+transform = Transform3D(0.14000002, 0, 0, 0, 2, 0, 0, 0, 1.0000001, 0.32000005, 0.5, 0)
+operation = 2
+
 [node name="StartArea" type="CSGCombiner3D" parent="." unique_id=399277700]
+use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StartArea" unique_id=865088363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
@@ -32,3 +64,302 @@ size = Vector3(1, 3, 6)
 [node name="CSGBox3D5" type="CSGBox3D" parent="StartArea" unique_id=440946580]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.5, -2.5)
 size = Vector3(1, 3, 6)
+
+[node name="Subway" type="CSGCombiner3D" parent="." unique_id=1305909296]
+use_collision = true
+
+[node name="Pillars" type="CSGCombiner3D" parent="Subway" unique_id=1794198888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=440644601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -3)
+height = 5.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=144289625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 3)
+height = 5.0
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=1837718298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 9)
+height = 5.0
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=126280098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -9)
+height = 5.0
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=1640426018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -15)
+height = 5.0
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=801833784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 15)
+height = 5.0
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=1399045584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, -3)
+height = 5.0
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=1787249895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, 3)
+height = 5.0
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=2058105096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, 9)
+height = 5.0
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=939921091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, -9)
+height = 5.0
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=1612749154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, -15)
+height = 5.0
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Subway/Pillars" unique_id=453057889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.5, 15)
+height = 5.0
+
+[node name="Track" type="CSGCombiner3D" parent="Subway" unique_id=983458194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Area" type="CSGBox3D" parent="Subway/Track" unique_id=752508379]
+transform = Transform3D(7, 0, 0, 0, 2.1, 0, 0, 0, 50, 0, -1, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Subway/Track/Area" unique_id=958646787]
+transform = Transform3D(0.8571429, 0, 0, 0, 0.952381, 0, 0, 0, 1, 0, 0.047619045, 0)
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Subway/Track" unique_id=1906818462]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 50, 1, -1.8, 0)
+material = SubResource("StandardMaterial3D_vk57k")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Subway/Track" unique_id=1973941997]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 50, -1, -1.8, 0)
+material = SubResource("StandardMaterial3D_vk57k")
+
+[node name="TrackBinder" type="CSGCombiner3D" parent="Subway/Track" unique_id=766690381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.85, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=857877952]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1696247326]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 1)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=387433080]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -1)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=344404343]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -3)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1731430371]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -4)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1154206659]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -2)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=610614470]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -6)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=648572222]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -7)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=803308430]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -5)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=373779539]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -9)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1519632287]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -10)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1663851398]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -8)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=643733726]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -12)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1839298774]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -13)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1338107972]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -11)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=463919690]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -15)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1449456445]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -16)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=395573693]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -14)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1739838771]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -18)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1585178662]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -19)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1126406396]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -17)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=720246841]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -21)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1480999995]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -22)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1465096358]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -20)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1981653389]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -24)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1871695271]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -25)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=757688713]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -23)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1359541084]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 24)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1169692572]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 23)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=115286942]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 25)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1388129429]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 21)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1159040739]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 20)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=987275105]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 22)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1473853354]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 18)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1554868823]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 17)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=984690076]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 19)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1607805580]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 15)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=78738191]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 14)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1778248083]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 16)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=135373833]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 12)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1983804382]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 11)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1414627345]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 13)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1568808612]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 9)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1724381453]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 8)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=682496234]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 10)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D47" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=391394362]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 6)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D48" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=996749507]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 5)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D49" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=852920619]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 7)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D50" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1378643557]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 3)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1606410724]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 2)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="Subway/Track/TrackBinder" unique_id=1672564856]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 4)
+material = SubResource("StandardMaterial3D_8ffim")
+
+[node name="Walls" type="CSGCombiner3D" parent="Subway" unique_id=1229436733]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Subway/Walls" unique_id=466778615]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 24)
+size = Vector3(1, 5, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Subway/Walls" unique_id=223612302]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -24)
+size = Vector3(1, 5, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Subway/Walls" unique_id=1561222121]
+transform = Transform3D(-2.0544353e-06, 0, 1, 0, 1, 0, -47, 0, -4.371139e-08, -24, 2.5, 0)
+size = Vector3(1, 5, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Subway/Walls" unique_id=789034151]
+transform = Transform3D(1, 0, 0, 0, -1.0927847e-06, -1, 0, 25, -4.371139e-08, 16, 0, 0)
+operation = 2
+radius = 4.0
+sides = 24

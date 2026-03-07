@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="RWG_SubwayHorror"
+run/main_scene="uid://bdca6jhyk3nie"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
