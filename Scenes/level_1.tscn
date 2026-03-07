@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bdca6jhyk3nie"]
 
+[ext_resource type="Script" uid="uid://bs2x8cqb7khw" path="res://GameManager.gd" id="1_8ffim"]
+[ext_resource type="PackedScene" uid="uid://dahvvnvyx3hjk" path="res://Player/player.tscn" id="1_vk57k"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqy1o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +27,7 @@ metallic = 0.39
 albedo_color = Color(0.738461, 0.49313146, 0.31224328, 1)
 
 [node name="Level1" type="Node3D" unique_id=292307927]
+script = ExtResource("1_8ffim")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=271324149]
 environment = SubResource("Environment_8ffim")
@@ -363,3 +367,6 @@ transform = Transform3D(1, 0, 0, 0, -1.0927847e-06, -1, 0, 25, -4.371139e-08, 16
 operation = 2
 radius = 4.0
 sides = 24
+
+[node name="Player" parent="." unique_id=188667805 instance=ExtResource("1_vk57k")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0, 1, 0)
