@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bs2x8cqb7khw" path="res://GameManager.gd" id="1_8ffim"]
 [ext_resource type="PackedScene" uid="uid://dahvvnvyx3hjk" path="res://Player/player.tscn" id="1_vk57k"]
+[ext_resource type="PackedScene" uid="uid://dj25jei23a1kn" path="res://Enemies/enemy.tscn" id="3_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://dqthe4fm3qare" path="res://Enemies/destination.tscn" id="4_6444e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqy1o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -379,3 +381,21 @@ transform = Transform3D(1, 0, 0, 0, -1.0927847e-06, -1, 0, 25, -4.371139e-08, 16
 operation = 2
 radius = 4.0
 sides = 24
+
+[node name="enemy" parent="." unique_id=2019542069 node_paths=PackedStringArray("patrolDestinations") instance=ExtResource("3_7p6j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -8)
+patrolDestinations = [NodePath("../Node3D/destination"), NodePath("../Node3D/destination2"), NodePath("../Node3D/destination3"), NodePath("../Node3D/destination4")]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1149405517]
+
+[node name="destination" parent="Node3D" unique_id=470077711 instance=ExtResource("4_6444e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.7, -11)
+
+[node name="destination2" parent="Node3D" unique_id=1737456689 instance=ExtResource("4_6444e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.4, -5)
+
+[node name="destination3" parent="Node3D" unique_id=1071003331 instance=ExtResource("4_6444e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, -11)
+
+[node name="destination4" parent="Node3D" unique_id=1790927227 instance=ExtResource("4_6444e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.7, -1)
