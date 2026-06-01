@@ -1,22 +1,37 @@
 [gd_scene format=3 uid="uid://dj25jei23a1kn"]
 
 [ext_resource type="Script" uid="uid://t71k0krxjcr0" path="res://Enemies/new_enemy.gd" id="1_3ih25"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_chnrf"]
+[ext_resource type="ArrayMesh" uid="uid://cb1uuh4vxeoe4" path="res://Enemies/Oberkörper.obj" id="2_bxkaj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ih25"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ih25"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxkaj"]
+size = Vector3(4.258789, 2.0483398, 5.9384766)
+
 [node name="enemy" type="CharacterBody3D" unique_id=2019542069]
 script = ExtResource("1_3ih25")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=470519605]
-mesh = SubResource("CapsuleMesh_chnrf")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3994291, 0)
+mesh = ExtResource("2_bxkaj")
 surface_material_override/0 = SubResource("StandardMaterial3D_3ih25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1471297203]
 shape = SubResource("CapsuleShape3D_3ih25")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1603527024]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=246798139]
+target_position = Vector3(0, 0, -10)
+
+[node name="Sichtbereich" type="Area3D" parent="." unique_id=937539994]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sichtbereich" unique_id=769697691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5241699, -2.8086762)
+shape = SubResource("BoxShape3D_bxkaj")
+
+[connection signal="body_entered" from="Sichtbereich" to="." method="_on_sichtbereich_body_entered"]
+[connection signal="body_exited" from="Sichtbereich" to="." method="_on_sichtbereich_body_exited"]
